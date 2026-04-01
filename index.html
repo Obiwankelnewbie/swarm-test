@@ -17,6 +17,7 @@
                     colors: {
                         swarmGreen: '#4ADE80',
                         swarmBlue: '#0F172A',
+                        swarmRed: '#F87171',
                     }
                 }
             }
@@ -25,16 +26,22 @@
     <style>
         .liquid-glass {
             background: rgba(255, 255, 255, 0.01);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
         }
-        .agent-pulse {
-            box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scan-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4ADE80, transparent);
+            animation: scan 3s linear infinite;
         }
     </style>
 </head>
-<body class="bg-black text-white font-sans selection:bg-swarmGreen/30">
+<body class="bg-black text-white font-sans selection:bg-swarmGreen/30 overflow-x-hidden">
 
     <nav class="fixed top-6 left-0 right-0 z-50 flex justify-center px-6">
         <div class="liquid-glass rounded-full px-6 py-3 flex items-center justify-between w-full max-w-5xl">
@@ -42,79 +49,123 @@
                 <div class="w-8 h-8 bg-swarmGreen rounded-lg flex items-center justify-center text-black font-bold text-xs">SC</div>
                 <span class="font-serif italic text-xl tracking-tight">Swarm Creator</span>
             </div>
-            <div class="hidden md:flex gap-8 text-[10px] uppercase tracking-[3px] text-white/40">
-                <a href="#" class="hover:text-swarmGreen transition-colors">Le Chasseur</a>
-                <a href="#" class="hover:text-swarmGreen transition-colors">L'Espion</a>
-                <a href="#" class="hover:text-swarmGreen transition-colors">Mission IA</a>
+            <div class="hidden md:flex gap-8 text-[9px] uppercase tracking-[3px] text-white/30">
+                <a href="#mission" class="hover:text-swarmGreen transition-colors">Mission IA</a>
+                <a href="#stats" class="hover:text-swarmGreen transition-colors">Performance</a>
+                <a href="#node" class="hover:text-swarmGreen transition-colors">Node Engine</a>
             </div>
-            <button class="bg-white text-black px-6 py-2 rounded-full text-[11px] font-bold hover:bg-swarmGreen transition-all active:scale-95">
-                DÉPLOYER L'ESSAIM
-            </button>
+            <div class="flex items-center gap-4">
+                <span class="text-[9px] text-swarmGreen font-bold animate-pulse hidden sm:inline">● 2 SYSTÈMES EN LIGNE</span>
+                <button class="bg-white text-black px-5 py-2 rounded-full text-[10px] font-bold hover:bg-swarmGreen transition-all">DÉPLOYER</button>
+            </div>
         </div>
     </nav>
 
     <section class="relative pt-48 pb-20 px-6 flex flex-col items-center text-center">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-swarmGreen/5 blur-[120px] rounded-full -z-10"></div>
         
-        <div class="liquid-glass rounded-full px-4 py-1 text-[10px] uppercase tracking-[3px] text-swarmGreen mb-8 border-swarmGreen/20">
-            SYSTÈME OPÉRATIONNEL À 80%
-        </div>
-
-        <h1 class="font-serif italic text-6xl md:text-8xl lg:text-[8rem] leading-[0.8] tracking-tight mb-8">
+        <h1 class="font-serif italic text-6xl md:text-8xl lg:text-[7.5rem] leading-[0.8] tracking-tight mb-8">
             L'armée d'agents <br/> <span class="text-white/20">qui prédit le butin.</span>
         </h1>
 
-        <p class="max-w-xl text-white/50 font-light text-base md:text-lg mb-12 leading-relaxed">
-            Connecté à <span class="text-white">Node.js</span>. Swarm Creator fusionne TikTok Shop, Amazon et Google Trends pour dominer le marché.
-        </p>
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <div class="liquid-glass px-4 py-2 rounded-2xl flex items-center gap-3">
+                <span class="text-swarmGreen font-bold font-serif text-xl italic">8h</span>
+                <span class="text-[10px] text-white/40 uppercase leading-none">Temps <br> gagné</span>
+            </div>
+            <div class="liquid-glass px-4 py-2 rounded-2xl flex items-center gap-3">
+                <span class="text-blue-400 font-bold font-serif text-xl italic">87€</span>
+                <span class="text-[10px] text-white/40 uppercase leading-none">Leads <br> B2B</span>
+            </div>
+            <div class="liquid-glass px-4 py-2 rounded-2xl flex items-center gap-3">
+                <span class="text-swarmRed font-bold font-serif text-xl italic">925€</span>
+                <span class="text-[10px] text-white/40 uppercase leading-none">GMV <br> TikTok</span>
+            </div>
+        </div>
 
         <div class="flex flex-wrap justify-center gap-6">
-            <button class="bg-swarmGreen text-black px-10 py-5 rounded-full text-sm font-bold shadow-[0_0_30px_rgba(74,222,128,0.3)] hover:scale-105 transition-transform">
-                VOIR LE BUTIN
-            </button>
-            <button class="liquid-glass px-10 py-5 rounded-full text-sm font-medium border-white/10 hover:bg-white/5">
-                LOGS AGENTS (NGROK)
+            <button class="bg-swarmGreen text-black px-10 py-5 rounded-full text-sm font-bold shadow-[0_0_30px_rgba(74,222,128,0.2)] hover:scale-105 transition-transform">
+                REJOINDRE L'ESSAIM
             </button>
         </div>
     </section>
 
-    <section class="py-24 px-6 max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="liquid-glass p-8 rounded-[2rem] border-white/5 relative group">
-                <div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-swarmGreen animate-pulse"></div>
-                <div class="text-swarmGreen mb-4 font-bold text-xs tracking-widest">AGENT 01</div>
-                <h3 class="font-serif italic text-3xl mb-2 text-white">Le Chasseur</h3>
-                <p class="text-white/40 text-sm mb-6 font-light font-sans">Analyse TikTok Shop & Trends en temps réel.</p>
-                <div class="w-full bg-white/5 h-1 rounded-full overflow-hidden">
-                    <div class="bg-swarmGreen h-full w-[74%]"></div>
+    <section id="mission" class="py-24 px-6 max-w-7xl mx-auto relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            
+            <div class="lg:col-span-5 space-y-6">
+                <div class="text-swarmGreen text-[10px] font-bold tracking-[4px] uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-swarmGreen"></span> Fusion Multi-Sources
                 </div>
-                <div class="mt-2 text-[10px] text-white/20">OBJECTIF JOURNALIER: 74%</div>
+                <h2 class="font-serif italic text-5xl md:text-6xl">Intelligence de <br> croisement.</h2>
+                <p class="text-white/40 font-light text-lg">
+                    Vos agents ne se contentent pas de scroller. Ils valident chaque <span class="text-white">opportunité virale</span> en croisant la vélocité Google avec les stocks Amazon.
+                </p>
+                <div class="p-6 liquid-glass rounded-3xl border-swarmGreen/10">
+                    <div class="text-[10px] text-white/30 uppercase mb-4 tracking-[2px]">Status Mission : Le Chasseur</div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-4xl font-serif italic text-swarmGreen">74%</span>
+                        <span class="text-[10px] text-white/40 uppercase">Objectif Journalier</span>
+                    </div>
+                    <div class="w-full bg-white/5 h-1.5 rounded-full mt-4 overflow-hidden">
+                        <div class="bg-swarmGreen h-full w-[74%]"></div>
+                    </div>
+                </div>
             </div>
 
-            <div class="liquid-glass p-8 rounded-[2rem] border-white/5 bg-white/[0.02]">
-                <div class="text-blue-400 mb-4 font-bold text-xs tracking-widest">AGENT 02</div>
-                <h3 class="font-serif italic text-3xl mb-2 text-white">L'Espion IA</h3>
-                <p class="text-white/40 text-sm mb-6 font-light">Croisement Amazon Best-Sellers Node.js.</p>
-                <div class="flex items-center gap-2">
-                    <span class="text-2xl font-serif italic text-blue-400">+482%</span>
-                    <span class="text-[10px] text-white/20 uppercase tracking-widest">Velocity</span>
+            <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                <div class="liquid-glass p-6 rounded-[2rem]">
+                    <div class="flex justify-between mb-4">
+                        <span class="text-[9px] font-bold text-blue-400 uppercase tracking-widest">Google Trends</span>
+                        <div class="w-2 h-2 rounded-full bg-blue-400"></div>
+                    </div>
+                    <div class="text-3xl font-serif italic mb-4">+482% Velocity</div>
+                    <svg viewBox="0 0 120 40" class="w-full h-12 overflow-visible">
+                        <path d="M0 35 Q 20 30 40 32 T 80 15 T 120 5" fill="none" stroke="#60A5FA" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="liquid-glass p-6 rounded-3xl flex items-center justify-between">
+                        <div>
+                            <div class="text-[9px] text-white/30 uppercase mb-1">TikTok Analysis</div>
+                            <div class="font-serif italic text-xl">Script Master [30s]</div>
+                        </div>
+                        <div class="text-pink-500">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/><path d="M15 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M15 2v10"/><path d="M9 18v-8"/><path d="M15 12a3 3 0 1 1-6 0"/></svg>
+                        </div>
+                    </div>
+                    <div class="liquid-glass p-6 rounded-3xl flex items-center justify-between bg-white/[0.02]">
+                        <div>
+                            <div class="text-[9px] text-white/30 uppercase mb-1">Amazon Inventory</div>
+                            <div class="font-serif italic text-xl">In Stock (High)</div>
+                        </div>
+                        <div class="text-orange-400">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="node" class="md:col-span-2 liquid-glass p-5 rounded-2xl bg-black/40 font-mono text-[9px]">
+                    <div class="flex items-center gap-2 mb-4 border-b border-white/5 pb-2">
+                        <span class="text-swarmGreen">●</span>
+                        <span class="text-white/20 uppercase tracking-[2px]">Node Engine Terminal</span>
+                    </div>
+                    <div class="space-y-1.5 opacity-60">
+                        <div class="text-swarmGreen">> [SUCCESS] Fusion sequence initiated...</div>
+                        <div>> [NGROK] Forwarding tunnel: https://swarm-creator.ngrok-free.app</div>
+                        <div>> [SWARM] Agent #432 deployed on Mission: Tech Gadget Viral</div>
+                        <div class="animate-pulse">> _ Attente de données...</div>
+                    </div>
                 </div>
             </div>
 
-            <div class="liquid-glass p-8 rounded-[2rem] border-white/5">
-                <div class="text-white/20 mb-4 font-bold text-xs tracking-widest">CORE SYSTEM</div>
-                <h3 class="font-serif italic text-3xl mb-2 text-white">Mission Live</h3>
-                <p class="text-white/40 text-sm mb-6 font-light">Tunnel Ngrok actif. Sync Dashboard.</p>
-                <div class="font-mono text-[9px] text-green-400/60 bg-black/40 p-3 rounded-lg border border-white/5">
-                    > [SUCCESS] Viral Match Detected<br>
-                    > [SYNC] Data pushed to node_db
-                </div>
-            </div>
         </div>
     </section>
 
-    <footer class="py-20 border-t border-white/5 text-center">
-        <div class="opacity-20 text-[10px] tracking-[5px] uppercase">Swarm Creator Intelligence — 2026</div>
+    <footer class="py-20 border-t border-white/5 text-center opacity-20">
+        <div class="text-[9px] tracking-[5px] uppercase">Swarm Creator Intelligence Engine — 2026</div>
     </footer>
 
 </body>
