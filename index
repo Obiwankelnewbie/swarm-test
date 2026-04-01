@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swarm Creator | Intelligence Artificielle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Instrument Serif"', 'serif'],
+                        sans: ['Barlow', 'sans-serif'],
+                    },
+                    colors: {
+                        swarmGreen: '#4ADE80',
+                        swarmBlue: '#0F172A',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        }
+        .agent-pulse {
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-black text-white font-sans selection:bg-swarmGreen/30">
+
+    <nav class="fixed top-6 left-0 right-0 z-50 flex justify-center px-6">
+        <div class="liquid-glass rounded-full px-6 py-3 flex items-center justify-between w-full max-w-5xl">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-swarmGreen rounded-lg flex items-center justify-center text-black font-bold text-xs">SC</div>
+                <span class="font-serif italic text-xl tracking-tight">Swarm Creator</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-[10px] uppercase tracking-[3px] text-white/40">
+                <a href="#" class="hover:text-swarmGreen transition-colors">Le Chasseur</a>
+                <a href="#" class="hover:text-swarmGreen transition-colors">L'Espion</a>
+                <a href="#" class="hover:text-swarmGreen transition-colors">Mission IA</a>
+            </div>
+            <button class="bg-white text-black px-6 py-2 rounded-full text-[11px] font-bold hover:bg-swarmGreen transition-all active:scale-95">
+                DÉPLOYER L'ESSAIM
+            </button>
+        </div>
+    </nav>
+
+    <section class="relative pt-48 pb-20 px-6 flex flex-col items-center text-center">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-swarmGreen/5 blur-[120px] rounded-full -z-10"></div>
+        
+        <div class="liquid-glass rounded-full px-4 py-1 text-[10px] uppercase tracking-[3px] text-swarmGreen mb-8 border-swarmGreen/20">
+            SYSTÈME OPÉRATIONNEL À 80%
+        </div>
+
+        <h1 class="font-serif italic text-6xl md:text-8xl lg:text-[8rem] leading-[0.8] tracking-tight mb-8">
+            L'armée d'agents <br/> <span class="text-white/20">qui prédit le butin.</span>
+        </h1>
+
+        <p class="max-w-xl text-white/50 font-light text-base md:text-lg mb-12 leading-relaxed">
+            Connecté à <span class="text-white">Node.js</span>. Swarm Creator fusionne TikTok Shop, Amazon et Google Trends pour dominer le marché.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-6">
+            <button class="bg-swarmGreen text-black px-10 py-5 rounded-full text-sm font-bold shadow-[0_0_30px_rgba(74,222,128,0.3)] hover:scale-105 transition-transform">
+                VOIR LE BUTIN
+            </button>
+            <button class="liquid-glass px-10 py-5 rounded-full text-sm font-medium border-white/10 hover:bg-white/5">
+                LOGS AGENTS (NGROK)
+            </button>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="liquid-glass p-8 rounded-[2rem] border-white/5 relative group">
+                <div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-swarmGreen animate-pulse"></div>
+                <div class="text-swarmGreen mb-4 font-bold text-xs tracking-widest">AGENT 01</div>
+                <h3 class="font-serif italic text-3xl mb-2 text-white">Le Chasseur</h3>
+                <p class="text-white/40 text-sm mb-6 font-light font-sans">Analyse TikTok Shop & Trends en temps réel.</p>
+                <div class="w-full bg-white/5 h-1 rounded-full overflow-hidden">
+                    <div class="bg-swarmGreen h-full w-[74%]"></div>
+                </div>
+                <div class="mt-2 text-[10px] text-white/20">OBJECTIF JOURNALIER: 74%</div>
+            </div>
+
+            <div class="liquid-glass p-8 rounded-[2rem] border-white/5 bg-white/[0.02]">
+                <div class="text-blue-400 mb-4 font-bold text-xs tracking-widest">AGENT 02</div>
+                <h3 class="font-serif italic text-3xl mb-2 text-white">L'Espion IA</h3>
+                <p class="text-white/40 text-sm mb-6 font-light">Croisement Amazon Best-Sellers Node.js.</p>
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl font-serif italic text-blue-400">+482%</span>
+                    <span class="text-[10px] text-white/20 uppercase tracking-widest">Velocity</span>
+                </div>
+            </div>
+
+            <div class="liquid-glass p-8 rounded-[2rem] border-white/5">
+                <div class="text-white/20 mb-4 font-bold text-xs tracking-widest">CORE SYSTEM</div>
+                <h3 class="font-serif italic text-3xl mb-2 text-white">Mission Live</h3>
+                <p class="text-white/40 text-sm mb-6 font-light">Tunnel Ngrok actif. Sync Dashboard.</p>
+                <div class="font-mono text-[9px] text-green-400/60 bg-black/40 p-3 rounded-lg border border-white/5">
+                    > [SUCCESS] Viral Match Detected<br>
+                    > [SYNC] Data pushed to node_db
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-white/5 text-center">
+        <div class="opacity-20 text-[10px] tracking-[5px] uppercase">Swarm Creator Intelligence — 2026</div>
+    </footer>
+
+</body>
+</html>
